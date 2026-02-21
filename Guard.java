@@ -21,7 +21,7 @@ public class Guard extends Entity {
 		@Override
 	public void move(char ignored, Map map) {
 			
-			
+		// The guard randomly selects the direction.	
 		char dir = DIRS[rnd.nextInt(DIRS.length)];
 		int nx = x;
 		int ny = y;
@@ -34,7 +34,7 @@ public class Guard extends Entity {
 		case 'D' : nx += 1; break;
 		}
 		
-		
+		// The Guard cannot leave the map or pass through the wall.
 		if(!map.inBounds(nx, ny)) return;
 		if(map.isWall(nx, ny)) return ;
 		
@@ -46,7 +46,7 @@ public class Guard extends Entity {
 	
 	}
 
-	
 		
 	}
+	
 	
