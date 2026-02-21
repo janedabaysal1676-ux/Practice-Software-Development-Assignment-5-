@@ -6,6 +6,8 @@ import java.util.*;
 public class Main {
 	
 	public static void main (String[]args )  {
+		
+		// Map size, number of walls and treasures
 		int size = 8;
 		int wallCount = 20;
 		int treasureCount = 6;
@@ -15,7 +17,7 @@ public class Main {
 		
 		Player player = new Player(0,0);
 		
-		
+		// Place the Guard at a random location
 		Random rnd = new Random();
 		int gx , gy ;
 		do {
@@ -34,7 +36,7 @@ public class Main {
 		
 		Scanner sc = new Scanner (System.in);
 		
-		
+		// In each turn, the player moves first, then the guard moves.
 		while(true) {
 			System.out.println("Player position :(" + player.getX() + "," + player.getY() + ")");
 			System.out.println("Guard position :(" + guard.getX() + "," + guard.getY() + ")");
@@ -48,6 +50,7 @@ public class Main {
 					char dir = input.charAt(0);
 					
 					
+	    // If the user presses the wrong key, the round will be considered invalid.
 					if ("WASD".indexOf(dir)==-1) {
 						System.out.println("invalid input! use W/A/S/D.");
 						continue;
@@ -56,6 +59,8 @@ public class Main {
 					
 					player.move(dir,map);
 					
+					
+		// If the player finds a treasure in their cell, they start collecting.
 					if (map.hasTreasure(player.getX(), player.getY()))  {
 						map.removeTreasure(player.getX(), player.getY());
 						System.out.println("treasure collected! remaining:"  + map.getRemainingTreasures());
@@ -64,13 +69,14 @@ public class Main {
 					
 					guard.move('X', map);
 					
+		// Losing: if you end up in the same cell as the guard
 					if (player.getX()   ==  guard.getX()  &&  player.getY()  ==  guard.getY()) {
 						System.out.println("you lost ! ");
 						break;
 					}
 					
 
-					
+		// Winning: when all the treasures are collected
 					if (map.getRemainingTreasures() == 0) {
 						System.out.println("you won.");
 						break;
