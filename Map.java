@@ -20,6 +20,7 @@ public class Map {
 		walls= new boolean [size][size];
 		treasures= new boolean [size][size];
 		
+		// Place the walls randomly
 		int placedWalls = 0;
 		while (placedWalls < wallCount)   {
 			int x = rnd.nextInt(size);
@@ -37,7 +38,7 @@ public class Map {
 		}
 		
 		
-		
+		// Randomly placing treasures
 		int placedTreasures = 0;
 		while (placedTreasures < treasureCount) {
 			int x = rnd.nextInt(size);
@@ -76,8 +77,6 @@ public class Map {
 	 }
 	 
 	 
-	 
-	 
 	 public boolean hasTreasure(int x, int y ) {
 		 return treasures[y][x];
 		 
@@ -85,7 +84,6 @@ public class Map {
 	 }
 	 
 	 
-
 	 
 	 public void removeTreasure(int x , int y) {
 		 if(treasures [y][x]) {
