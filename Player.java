@@ -14,7 +14,7 @@ public class Player extends Entity {
 		int ny = y;
 		
 		
-		
+		// Movement keys
 		switch (direction) {
 		case 'W' : ny += 1; break;  //up
 		case 'S' : ny -= 1; break;  //down
@@ -25,6 +25,7 @@ public class Player extends Entity {
 			return;
 		}
 		
+		// You cannot go outside the map or pass through the wall.
 		if(!map.inBounds(nx, ny)) {
 			System.out.println(" you cannot leave the map");
 			return;
